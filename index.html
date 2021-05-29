@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Registration Form Validator</title>
+    </head>
+    <body>
+        <div id="main">
+            <div>
+                <form id="form" class="form" novalidate>
+                    <div>
+                        <h2>Register with us</h2>
+                        <br /><br />
+                    </div>
+                    <div class="formSpace">
+                        <label for="user">Username</label>
+                        <br />
+                        <input
+                            type="text"
+                            name="user"
+                            class="user"
+                            id="user"
+                            placeholder="Enter username"
+                            required
+                        />
+                        <br />
+                        <p id="demoUser"></p>
+                        <br /><br />
+                    </div>
+                    <div class="formSpace">
+                        <label for="email">Email</label>
+                        <br />
+                        <input
+                            type="email"
+                            name="email"
+                            class="email"
+                            id="email"
+                            placeholder="Enter email"
+                            required
+                        />
+                        <br />
+                        <p id="demoEmail"></p>
+                        <br /><br />
+                    </div>
+                    <div class="formSpace">
+                        <label for="password">Password</label>
+                        <br />
+                        <input
+                            type="password"
+                            name="password"
+                            class="password"
+                            id="password"
+                            placeholder="Enter password"
+                            minlength="6"
+                            oninput="checkLength()"
+                            required
+                        />
+                        <br />
+                        <p id="demoPass"></p>
+                        <br /><br />
+                    </div>
+                    <div class="formSpace">
+                        <label for="confirm">Confirm Password</label>
+                        <br />
+                        <input
+                            type="password"
+                            class="confirm"
+                            name="confirm"
+                            id="confirm"
+                            placeholder="Enter password again"
+                            minlength="6"
+                            oninput="checkLength()"
+                            required
+                        />
+                        <br />
+                        <p id="demoConf"></p>
+                        <br /><br />
+                    </div>
+                    <div class="button">
+                        <button type="submit" value="Submit" id="btn">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
