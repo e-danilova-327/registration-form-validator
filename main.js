@@ -87,6 +87,13 @@ function checkPasswordsMatch() {
         document.getElementById('confErr').style.fontSize = '12px';
         //return false;
     }
+    if (confirmPass.value == '') {
+        document.getElementById(
+            'confErr'
+        ).innerHTML = `Please fill in this field`;
+        document.getElementById('confErr').style.color = 'red';
+        document.getElementById('confErr').style.fontSize = '12px';
+    }
 }
 
 //showError() to display the error message NOT WORKING YET
