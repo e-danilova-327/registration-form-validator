@@ -1,97 +1,101 @@
-const user_input = document.querySelector('.user');
-const email_input = document.querySelector('.email');
-const password_input = document.querySelector('.password');
-const confirm_input = document.querySelector('.confirm');
-const form_input = document.querySelector('.form');
+const user = document.querySelector('#user');
+const email = document.querySelector('#email');
+const password = document.querySelector('#password');
+const confirmPass = document.querySelector('#confirm');
+const form = document.getElementById('form');
+const error = document.querySelectorAll('.error');
+const input = document.getElementsByClassName('input');
 
-/*form_input.addEventListener('submit', (e) => {
+form.addEventListener('click', preventDflt);
+
+function preventDflt(e) {
     e.preventDefault();
+}
 
-    checkRequired();
+function mainValidator() {
+    checkEmail(); 
+    checkRequired(); 
     checkLength();
-    checkEmail();
-    checkPasswordsMatch();
-    showError();
-    showSuccess();
-});*/
+    checkPasswordsMatch(); 
+}
 
-let x = document.getElementById('btn');
-x.addEventListener('click', checkRequired);
-x.addEventListener('click', checkLength);
-x.addEventListener('click', checkEmail);
-x.addEventListener('click', checkPasswordsMatch);
-x.addEventListener('click', showError);
-x.addEventListener('click', showSuccess);
+//checkRequired() to accept array of inputs WORKING
 
-const userValue = String(user_input.value.trim());
-const emailValue = String(email_input.value.trim());
-const passwordValue = String(password_input.value.trim());
-const confirmValue = String(confirm_input.value.trim());
-
-//checkRequired() to accept array of inputs
-
-const checkRequired = (input) => {
-    if (input == '') {
-        input.getElementById('demo').innerText = 'Please fill in this field';
+const checkRequired = () => {
+    for (let i = 0; i < input.length; i++) {
+        if (input[i].value == '') {
+            document.querySelectorAll('.error')[i].innerHTML = 'Please fill in this field';
+            document.querySelectorAll('.error')[i].style.color = 'red';
+            document.querySelectorAll('.error')[i].style.fontSize = '12px';
+        }
     }
 };
 
-//checkLength() to check min and max length
+//checkLength() to check min and max length WORKING
 function checkLength() {
-    if (passwordValue.length < 6) {
+    if (password.value.length < 6) {
         document.getElementById(
-            'password'
-        ).innerHTML = `The password should be at least 6 characters long, you now have ${passwordValue.length}`;
-    }
-    if (passwordValue.length > 12) {
+            'pass'
+        ).innerHTML = `The password should be at least 6 characters long, you now have ${password.value.length}`;
         document.getElementById(
-            'password'
-        ).innerHTML = `The password should be max 12 characters long, you now have ${passwordValue.length}`;
+            'pass'
+        ).style.color = 'red';
+        document.getElementById(
+            'pass'
+        ).style.fontSize = '12px';
+    } else if (password.value.length > 12) {
+        document.getElementById(
+            'pass'
+        ).innerHTML = `The password should be max 12 characters long, you now have ${password.value.length}`;
+    } else {
+        showSuccess();
     }
 }
 
-//checkEmail() to validate email with regex
+//checkEmail() to validate email with regex WORKING
 
-function checkEmail(inputText) {
+function checkEmail() {
     let mailformat =
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (inputText.value.match(mailformat)) {
-        document.getElementById('demoEmail').innerHTML = `Valid email address!`;
-        document.getElementById('demoEmail').style.color = 'green';
-        document.getElementById('demoEmail').style.fontSize = '12px';
-        return true;
+    if (email.value.match(mailformat)) {
+        document.getElementById('emailErr').innerHTML = `Valid email address!`;
+        document.getElementById('emailErr').style.color = 'green';
+        document.getElementById('emailErr').style.fontSize = '12px';
+        //return true;
     } else {
         document.getElementById(
-            'demoEmail'
+            'emailErr'
         ).innerHTML = `You have entered an invalid email address!`;
-        document.getElementById('demoEmail').style.color = 'red';
-        document.getElementById('demoEmail').style.fontSize = '12px';
-        return false;
+        document.getElementById('emailErr').style.color = 'red';
+        document.getElementById('emailErr').style.fontSize = '12px';
+        //return false;
     }
 }
 
-//checkPasswordsMatch() to match confirm password
+//checkPasswordsMatch() to match confirm password WORKING
 function checkPasswordsMatch() {
-    let pass1 = passwordValue;
-    let pass2 = confirmValue;
-    if (pass1 == pass2) {
-        document.getElementById('demoConf').innerHTML = `The password is OK!`;
-        document.getElementById('demoConf').style.color = 'green';
-        document.getElementById('demoConf').style.fontSize = '12px';
+    if (password.value == confirmPass.value) {
+        document.getElementById('confErr').innerHTML = `The password is OK!`;
+        document.getElementById('confErr').style.color = 'green';
+        document.getElementById('confErr').style.fontSize = '12px';
+        //return true;
     } else {
         document.getElementById(
-            'demoConf'
+            'confErr'
         ).innerHTML = `The passwords don't match!`;
-        document.getElementById('demoConf').style.color = 'red';
-        document.getElementById('demoConf').style.fontSize = '12px';
+        document.getElementById('confErr').style.color = 'red';
+        document.getElementById('confErr').style.fontSize = '12px';
+        //return false;
     }
 }
 
-//showError() to display the error message
+//showError() to display the error message NOT WORKING YET
 
-function showError() {}
+function showError(message) {
+    document.getElementsByClassName('error') = message;
+}
 
-//showSuccess() to show success green outline
+//showSuccess() to show success green outline NOT WORKING YET
 
 function showSuccess() {
     document.getElementsByTagName('input').style.outlineColor = 'green';

@@ -10,7 +10,7 @@
     <body>
         <div id="main">
             <div>
-                <form id="form" class="form" novalidate>
+                <form name="form" id="form" class="form" novalidate>
                     <div>
                         <h2>Register with us</h2>
                         <br /><br />
@@ -21,13 +21,14 @@
                         <input
                             type="text"
                             name="user"
-                            class="user"
+                            class="input"
+                            autocomplete="username"
                             id="user"
                             placeholder="Enter username"
                             required
                         />
                         <br />
-                        <p id="demoUser"></p>
+                        <p class="error"></p>
                         <br /><br />
                     </div>
                     <div class="formSpace">
@@ -36,13 +37,13 @@
                         <input
                             type="email"
                             name="email"
-                            class="email"
+                            class="input"
                             id="email"
                             placeholder="Enter email"
                             required
                         />
                         <br />
-                        <p id="demoEmail"></p>
+                        <p class="error" id="emailErr"></p>
                         <br /><br />
                     </div>
                     <div class="formSpace">
@@ -51,15 +52,15 @@
                         <input
                             type="password"
                             name="password"
-                            class="password"
+                            class="input"
                             id="password"
+                            autocomplete="new-password"
                             placeholder="Enter password"
                             minlength="6"
-                            oninput="checkLength()"
                             required
                         />
                         <br />
-                        <p id="demoPass"></p>
+                        <p class="error" id="pass"></p>
                         <br /><br />
                     </div>
                     <div class="formSpace">
@@ -67,20 +68,25 @@
                         <br />
                         <input
                             type="password"
-                            class="confirm"
+                            class="input"
                             name="confirm"
                             id="confirm"
+                            autocomplete="new-password"
                             placeholder="Enter password again"
                             minlength="6"
-                            oninput="checkLength()"
                             required
                         />
                         <br />
-                        <p id="demoConf"></p>
+                        <p class="error" id="confErr"></p>
                         <br /><br />
                     </div>
                     <div class="button">
-                        <button type="submit" value="Submit" id="btn">
+                        <button
+                            onclick="mainValidator()"
+                            type="submit"
+                            value="Submit"
+                            id="btn"
+                        >
                             Submit
                         </button>
                     </div>
